@@ -26,7 +26,7 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
     if (!apiKey.trim()) {
       toast({
         title: "API Key Required",
-        description: "Please enter your API key to proceed",
+        description: "Please enter your Gemini API key to proceed",
         variant: "destructive",
       });
       return;
@@ -107,7 +107,7 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <label htmlFor="apiKey" className="text-sm font-medium">
-              API Key
+              Gemini API Key
             </label>
             <div className="flex">
               <Input
@@ -116,7 +116,7 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
                 className="flex-1"
-                placeholder="Enter your API key"
+                placeholder="Enter your Gemini API key"
               />
               <Button
                 type="button"
@@ -129,7 +129,7 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              Your API key is stored locally and never sent to our servers
+              Your Gemini API key is stored locally and never sent to our servers
             </p>
           </div>
 

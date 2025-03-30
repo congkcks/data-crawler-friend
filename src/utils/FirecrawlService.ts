@@ -14,7 +14,7 @@ interface CrawlResult {
 }
 
 export class FirecrawlService {
-  private static API_KEY_STORAGE_KEY = 'firecrawl_api_key';
+  private static API_KEY_STORAGE_KEY = 'gemini_api_key';
   
   static saveApiKey(apiKey: string): void {
     localStorage.setItem(this.API_KEY_STORAGE_KEY, apiKey);
@@ -27,9 +27,17 @@ export class FirecrawlService {
   static async crawlWebsite(url: string): Promise<CrawlResult> {
     try {
       console.log('Starting crawl for URL:', url);
+      const apiKey = this.getApiKey();
+      
+      if (!apiKey) {
+        return {
+          success: false,
+          error: 'Gemini API key not found. Please add your API key first.'
+        };
+      }
       
       // This is a mock implementation since we can't actually crawl websites in the browser
-      // In a real implementation, this would call a backend API
+      // In a real implementation, this would call the Gemini AI API
       
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 2000));
