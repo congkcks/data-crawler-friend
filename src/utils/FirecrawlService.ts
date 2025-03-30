@@ -4,9 +4,9 @@ import { toast } from "@/components/ui/use-toast";
 interface CrawlResult {
   success: boolean;
   data?: {
-    products: Array<{
-      name: string;
-      image: string;
+    images: Array<{
+      url: string;
+      alt: string;
     }>;
     url: string;
   };
@@ -37,33 +37,45 @@ export class FirecrawlService {
       }
       
       // This is a mock implementation since we can't actually crawl websites in the browser
-      // In a real implementation, this would call the Gemini AI API
+      // In a real implementation, this would call the Gemini AI API to extract all images
       
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Mock data for demonstration
+      // Mock data for demonstration - now with image URLs instead of product data
       const mockData = {
-        products: [
+        images: [
           {
-            name: "Product 1",
-            image: "https://source.unsplash.com/random/300x200?product=1"
+            url: "https://source.unsplash.com/random/800x600?website=1",
+            alt: "Image 1"
           },
           {
-            name: "Product 2",
-            image: "https://source.unsplash.com/random/300x200?product=2"
+            url: "https://source.unsplash.com/random/800x600?website=2",
+            alt: "Image 2"
           },
           {
-            name: "Product 3",
-            image: "https://source.unsplash.com/random/300x200?product=3"
+            url: "https://source.unsplash.com/random/800x600?website=3",
+            alt: "Image 3"
           },
           {
-            name: "Product 4",
-            image: "https://source.unsplash.com/random/300x200?product=4"
+            url: "https://source.unsplash.com/random/800x600?website=4",
+            alt: "Image 4"
           },
           {
-            name: "Product 5",
-            image: "https://source.unsplash.com/random/300x200?product=5"
+            url: "https://source.unsplash.com/random/800x600?website=5",
+            alt: "Image 5"
+          },
+          {
+            url: "https://source.unsplash.com/random/800x600?website=6",
+            alt: "Image 6"
+          },
+          {
+            url: "https://source.unsplash.com/random/800x600?website=7",
+            alt: "Image 7"
+          },
+          {
+            url: "https://source.unsplash.com/random/800x600?website=8",
+            alt: "Image 8"
           }
         ],
         url: url

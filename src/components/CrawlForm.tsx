@@ -41,6 +41,18 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
       return;
     }
 
+    // Check if URL is valid
+    try {
+      new URL(url);
+    } catch (e) {
+      toast({
+        title: "Invalid URL",
+        description: "Please enter a valid URL (including http:// or https://)",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
     setProgress(0);
     
@@ -63,7 +75,7 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
       if (result.success && result.data) {
         toast({
           title: "Success",
-          description: "Website crawled successfully",
+          description: `Found ${result.data.images.length} images on the website`,
         });
         onCrawlComplete(result.data);
       } else {
@@ -99,8 +111,8 @@ export const CrawlForm = ({ onCrawlComplete }: CrawlFormProps) => {
   return (
     <Card className="w-full max-w-md mx-auto shadow-lg border border-gray-200 dark:border-gray-800">
       <CardHeader>
-        <CardTitle className="text-xl font-bold text-crawl-dark-blue dark:text-crawl-accent">Web Crawler</CardTitle>
-        <CardDescription>Enter a URL to crawl for product data</CardDescription>
+        <CardTitle className="text-xl font-bold text-crawl-dark-blue dark:text-crawl-accent">Website Image Crawler</CardTitle>
+        <CardDescription>Enter a URL to extract all images from a website</CardDescription>
       </CardHeader>
       
       <CardContent>
